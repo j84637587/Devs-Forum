@@ -1,0 +1,44 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteRule ^(sign_in|sign_up|lost_password|messages|profile|logout|online_users|adpanel|shop)/?$ index.php?page=forum_$1 [L]
+RewriteRule ^f/([a-zA-Z0-9_.-]+)/([a-zA-Z0-9_.-]+)/?$ index.php?page=view_forum&id=$2 [L]
+RewriteRule ^f/([a-zA-Z0-9_.-]+)/([a-zA-Z0-9_.-]+)/([0-9A-Za-z]+)/?$ index.php?page=view_forum&id=$2&p=$3 [L]
+RewriteRule ^post/thread/([0-9A-Za-z-]+)/([0-9A-Za-z-]+)/?$ index.php?page=post_thread&category_id=$1&forum_id=$2 [L]
+RewriteRule ^post/replie/([0-9A-Za-z-]+)/([0-9A-Za-z-]+)/([0-9A-Za-z-]+)/?$ index.php?page=post_replie&category_id=$1&forum_id=$2&thread_id=$3 [L]
+RewriteRule ^post/edit/([0-9A-Za-z-]+)/([0-9A-Za-z-]+)/?$ index.php?page=post_edit&type=$1&id=$2 [L]
+RewriteRule ^post/delete/([0-9A-Za-z-]+)/([0-9A-Za-z-]+)/?$ index.php?page=post_delete&type=$1&id=$2 [L]
+RewriteRule ^post/quote/([0-9A-Za-z-]+)/([0-9A-Za-z-]+)/?$ index.php?page=post_quote&type=$1&id=$2 [L]
+RewriteRule ^post/report/([0-9A-Za-z-]+)/([0-9A-Za-z-]+)/?$ index.php?page=post_report&type=$1&id=$2 [L]
+RewriteRule ^t/([0-9A-Za-z-]+)/([0-9A-Za-z]+)/?$ index.php?page=view_thread&id=$2 [L]
+RewriteRule ^t/([0-9A-Za-z-]+)/([0-9A-Za-z]+)/([0-9A-Za-z]+)/?$ index.php?page=view_thread&id=$2&p=$3 [L]
+RewriteRule ^search/?$ index.php?page=search [L]
+RewriteRule ^tag/?$ index.php?page=tag [L]
+RewriteRule ^chat/?$ index.php?page=chat [L]
+RewriteRule ^chat_content/?$ index.php?page=chat_content [L]
+RewriteRule ^search/([0-9A-Za-z]+)/?$ index.php?page=search&p=$1 [L]
+RewriteRule ^tag/([0-9A-Za-z]+)/?$ index.php?page=tag&search_name=$1 [L]
+RewriteRule ^user/([a-zA-Z0-9_.-]+)/?$ index.php?page=userinfo&id=$1 [L]
+RewriteRule ^send_message/([0-9A-Za-z]+)/?$ index.php?page=send_message&id=$1 [L]
+RewriteRule ^read_message/([0-9A-Za-z]+)/?$ index.php?page=read_message&id=$1 [L]
+RewriteRule ^reply_message/([0-9A-Za-z]+)/?$ index.php?page=reply_message&id=$1 [L]
+RewriteRule ^delete_message/([0-9A-Za-z]+)/?$ index.php?page=delete_message&id=$1 [L]
+RewriteRule ^messages/([0-9A-Za-z]+)/?$ index.php?page=forum_messages&p=$1 [L]
+RewriteRule ^shop/([0-9A-Za-z]+)/?$ index.php?page=shop&p=$1 [L]
+RewriteRule ^online_users/([0-9A-Za-z]+)/?$ index.php?page=online_users&p=$1 [L]
+RewriteRule ^panel/([0-9A-Za-z]+)/([0-9A-Za-z]+)/([0-9A-Za-z]+)/?$ index.php?page=panel&action=$1&type=$2&id=$3 [L]
+RewriteRule ^adpanel_func/([0-9A-Za-z]+)/([0-9A-Za-z]+)/([0-9A-Za-z]+)/?$ index.php?page=adpanel_func&action=$1&type=$2&id=$3 [L]
+RewriteRule ^panel/unlock/([0-9A-Za-z]+)/?$ index.php?page=panel&action=unlock&type=thread&id=$1 [L]
+RewriteRule ^panel/lock/([0-9A-Za-z]+)/?$ index.php?page=panel&action=lock&type=thread&id=$1 [L]
+RewriteRule ^adpanel/([0-9A-Za-z_]+)/?$ index.php?page=forum_adpanel&p=$1 [L]
+
+
+ErrorDocument 404 /error-404
+ErrorDocument 403 /error-403
+
+
+
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+</IfModule>
